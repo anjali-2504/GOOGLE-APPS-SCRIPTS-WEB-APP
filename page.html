@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <base target="_top">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <style>
+      .row{
+        margin-bottom:15px;
+
+      }
+      </style>
+  </head>
+  <body>
+    
+    <div class="container">
+      <h1>NSS UNIT 12</h1>
+      <? var title="<i>HELLO</i>";  ?>
+     <h1> <?!= title; ?></h2>
+     <div class="row">
+        <div class="input-field col s6">
+          <input  id="fn" type="text" class="validate">
+          <label for="fn">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="ln" type="text" class="validate">
+          <label for="ln">Last Name</label>
+        </div>
+      </div> <!--close row-->
+<div class="row">
+  
+
+
+  <div class="input-field col s6">
+    <select id="task">
+      <option disabled selected>Choose your Activity</option>
+      <option>Presentation</option>
+       <option >Survey</option>
+       <option>Teaching</option>
+       <option>Others</option>
+    </select>
+    <label>Activity</label>
+  </div>
+
+  </div>  <!--close row-->
+
+<div class="row">
+  <button id="btn" class="btn waves-effect waves-light pink" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+   </div>  <!--close row-->
+ </div>  <!--close container-->
+ 
+
+
+  
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
+   <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+   document.getElementById("btn").addEventListener("click",doStuff);
+    function doStuff()
+    { 
+     var userInfo1 =document.getElementById("fn").value;
+     var userInfo2=document.getElementById("ln").value;
+     var userInfo3=document.getElementById("task").value;
+     // Logger.log(userInfo);
+      google.script.run.onClick(userInfo1,userInfo2,userInfo3);
+      userInfo1=document.getElementById("fn").value=" ";
+      userInfo2=document.getElementById("ln").value=" ";
+     // userInfo.task=document.getElementById("task").selectedIndex=0;
+      var mytask=document.getElementById("task");
+      mytask.selectedIndex=0;
+       M.FormSelect.init( mytask);
+    }
+    </script>
+  </body>
+  
+ 
+</html>
